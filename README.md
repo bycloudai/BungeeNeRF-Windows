@@ -75,8 +75,12 @@ Some notes on processing camera poses exported from Google Earth Studio:
 
 Feel free to contact authors if you have any question about the data.
 
+## Pretrained Model
+You can download a pretrained model that I've made [here]()
+Along with the [configs]()
+You can skip training one yourself and use this pretrained model instead.
 
-## Running
+## Training
 The training script automatically saves every 10k iterations. 
 
 Everytime you run a new stage, keep an eye out on which iter the last saved at, and make sure that the next stage reads the right iter file. You can either use `--ft_path` arg to make it more specific, or make sure the largest iter file is from the previous stage.

@@ -84,7 +84,7 @@ Everytime you run a new stage, keep an eye out on which iter the last saved at, 
 
 `<EXP_CONFIG_FILE>`: The config file name eg. `56Leonard.txt`
 
-`<PREV_CKPT_PATH>`: The checkpoint for the training eg. `C":\BungeeNeRF\BungeeNeRF\logs\56leonard_test_st0\110000.tar`
+`<PREV_CKPT_PATH>`: The checkpoint for the training eg. `C:\BungeeNeRF\BungeeNeRF\logs\56leonard_test_st0\110000.tar`
 
 To run experiments, use:
 Stage 0: (run around 30k iter, ~5 hours on RTX3090)

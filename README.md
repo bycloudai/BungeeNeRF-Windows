@@ -22,9 +22,9 @@ We recommend using [Anaconda](https://www.anaconda.com/products/individual) to s
 up the environment. Run the following commands:
 
 ```
-git clone https://github.com/city-super/BungeeNeRF.git; cd BungeeNeRF
-conda create --name bungee python=3.7; conda activate bungee
-conda install pip; pip install --upgrade pip
+git clone https://github.com/city-super/BungeeNeRF.git && cd BungeeNeRF
+conda create --name bungee python=3.7 && conda activate bungee
+conda install pytorch==1.11.0 torchvision==0.12.0 torchaudio==0.11.0 cudatoolkit=11.3 -c pytorch
 pip install -r requirements.txt
 mkdir data
 ```

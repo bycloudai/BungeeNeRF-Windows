@@ -77,20 +77,55 @@ Feel free to contact authors if you have any question about the data.
 
 
 ## Running
+The training script automatically saves every 10k iterations. 
+
+Everytime you run a new stage, keep an eye out on which iter the last saved at, and make sure that the next stage reads the right iter file. You can either use `--ft_path` arg to make it more specific, or make sure the largest iter file is from the previous stage.
+
+
+`<EXP_CONFIG_FILE>`: The config file name eg. `56Leonard.txt`
+
+`<PREV_CKPT_PATH>`: The checkpoint for the training eg. `C":\BungeeNeRF\BungeeNeRF\logs\56leonard_test_st0\110000.tar`
+
 To run experiments, use:
+Stage 0: (run around 30k iter, ~5 hours on RTX3090)
 ```
-python run_bungee.py --config configs/EXP_CONFIG_FILE
+python run_bungee.py --config configs/<EXP_CONFIG_FILE> --cur_stage 0 --ft_path <PREV_CKPT_PATH>
 ```
-The training starts from the furthest scale, with `cur_stage=0`. After an ideal amount of training you can switch to the next training stage by specifying `cur_stage=1`, which will include one finer scale into the training set; and start training from a previous stage checkpoint specified with `--ft_path`:
+Stage 1: (run around 30k iter, ~5 hours on RTX3090)
 ```
-python run_bungee.py --config configs/EXP_CONFIG_FILE --cur_stage 1 --ft_path PREV_CKPT_PATH
+python run_bungee.py --config configs/<EXP_CONFIG_FILE> --cur_stage 1 --ft_path <PREV_CKPT_PATH>
+```
+Stage 2: (run around 100k iter, ~25 hours on RTX3090)
+```
+python run_bungee.py --config configs/<EXP_CONFIG_FILE> --cur_stage 2 --ft_path <PREV_CKPT_PATH>
+```
+Stage 3: (run around 100k iter, ~30 hours on RTX3090)
+```
+python run_bungee.py --config configs/<EXP_CONFIG_FILE> --cur_stage 3 --ft_path <PREV_CKPT_PATH>
 ```
 
 ## Rendering
 To render views, use:
 ```
-python run_bungee.py --config configs/EXP_CONFIG_FILE --render_test
+python run_bungee.py --config configs/<EXP_CONFIG_FILE> --render_test
 ```
+
+These are the other render parameters:
+|argument|action|description|
+| --- | --- | --- |
+|`--render_test` |'store_true'| render the test set instead of render_poses path|
+
+|argument|type|default value|description|
+| --- | --- | --- | --- |
+|`--N_samples` |int| 64| number of coarse samples per ray|
+|`--N_importance` |int| 0| number of additional fine samples per ray|
+|`--perturb` |float| 1.| set to 0. for no jitter, 1. for jitter|
+|`--i_embed` |int| 0| set 0 for default positional encoding, -1 for none|
+|`--multires` |int| 10| log2 of max freq for positional encoding (3D location)|
+|`--min_multires` |int| 0| log2 of min freq for positional encoding (3D location)|
+|`--multires_views` |int| 4| log2 of max freq for positional encoding (2D direction)|
+|`--raw_noise_std` |float| 0| std dev of noise added to regularize sigma_a output, 1e0 recommended|
+|`--render_factor` |int| 0| downsampling factor to speed up rendering, set 4 or 8 for fast preview|
 
 
 ## Citation

@@ -109,9 +109,9 @@ python run_bungee.py --config configs/<EXP_CONFIG_FILE> --cur_stage 3 --ft_path 
 ```
 
 ## Rendering
-To render views, use:
+### To render default views, use:
 ```
-python run_bungee.py --config configs/<EXP_CONFIG_FILE> --render_test
+python run_bungee.py --config configs/<EXP_CONFIG_FILE> --render_test --holdout 1
 ```
 
 These are the other render parameters:
@@ -130,7 +130,30 @@ These are the other render parameters:
 |`--multires_views` |int| 4| log2 of max freq for positional encoding (2D direction)|
 |`--raw_noise_std` |float| 0| std dev of noise added to regularize sigma_a output, 1e0 recommended|
 |`--render_factor` |int| 0| downsampling factor to speed up rendering, set 4 or 8 for fast preview|
+|`--holdout` |int| 8| will take every 1/N images as test set, do 1|
 
+### To render custom views (56Leonard data as example):
+
+Sign up for [Google Earth Studio](https://earth.google.com/studio/) (takes them about 2 ~ 3 day to accept you), import `56leonard.esp` to get a reference for views.
+
+Edit the views to how you like it, and export it under the following settings
+![image](https://user-images.githubusercontent.com/29135514/184240987-03a4e3a1-04c3-4232-a3e6-8089e82aa781.png)
+
+After that, take the `56leonard.json` and move it to `\\BungeeNeRF\data\multiscale_google_56Leonard\` and name it `GES_local.json`
+
+Run the following command
+```
+python GES2pose.py --datadir data\multiscale_google_56Leonard
+```
+
+It'll take like a long time, 1h 30 mins on RTX3090 for a 2~ mins scene.
+
+After that is done, it'll generate a file `poses_enu.json` under `\\BungeeNeRF\data\multiscale_google_56Leonard`
+
+To render:
+```
+python run_bungee.py --config configs/56Leonard.txt --render_test --holdout 1
+```
 
 ## Citation
 ```

@@ -76,8 +76,10 @@ Some notes on processing camera poses exported from Google Earth Studio:
 Feel free to contact authors if you have any question about the data.
 
 ## Pretrained Model
-You can download a pretrained model that I've made [here](https://drive.google.com/file/d/1plr4RSYuMgTPbWiSWJ5uW181zQvqtfB5/view?usp=sharing), it should locate in BungeeNeRF/logs/56leonard_test_st0/
-Along with the [configs](https://drive.google.com/file/d/1nMywfGiauzXNYfqvCRIXIbUsBBn8gUIM/view?usp=sharing)
+You can download a pretrained model that I've made [here](https://drive.google.com/file/d/1plr4RSYuMgTPbWiSWJ5uW181zQvqtfB5/view?usp=sharing), it should locate in `BungeeNeRF/logs/56leonard_test_st0/`
+
+Along with the [config](https://drive.google.com/file/d/1nMywfGiauzXNYfqvCRIXIbUsBBn8gUIM/view?usp=sharing), it should locate in `BungeeNeRF/configs` and `BungeeNeRF/logs/56leonard_test_st0/`
+
 You can skip training one yourself and use this pretrained model instead.
 
 ## Training

@@ -157,7 +157,7 @@ To render:
 python run_bungee.py --config configs/56Leonard.txt --render_test --holdout 1
 ```
 
-My result:
+My result (I used ffmpeg to combine the frames):
 
 ![ezgif com-gif-maker](https://user-images.githubusercontent.com/29135514/188278069-c3c63b94-f1e1-4108-8e1a-31257e325606.gif)
 
